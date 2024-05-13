@@ -11,8 +11,11 @@ export function useSocket() {
         try {
             const token = localStorage.getItem('token');
             socket = io(process.env.REACT_APP_BACKEND_WS_URL!, {
-                query: { token }
-            });
+                extraHeaders: {
+                    'bypass-tunnel-reminder': 'true',
+                },
+                query: { token },
+            },);
         } catch (error) {
             console.log(error);
             return;

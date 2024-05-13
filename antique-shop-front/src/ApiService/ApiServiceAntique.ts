@@ -14,6 +14,7 @@ export class ApiService {
             const response = await axios.put(`${BASE_URL}/antiques/${id}`, updatedItems, {
                 headers: {
                     Authorization: `Bearer ${this.token}`,
+                    'bypass-tunnel-reminder': 'true',
                     "Content-Type": "multipart/form-data"
                 }
             });
@@ -29,6 +30,7 @@ export class ApiService {
             const response = await axios.post(`${BASE_URL}/antiques`, updatedItems, {
                 headers: {
                     Authorization: `Bearer ${this.token}`,
+                    'bypass-tunnel-reminder': 'true',
                     "Content-Type": "multipart/form-data"
                 }
             });
@@ -44,6 +46,7 @@ export class ApiService {
             const response = await axios.post(`${BASE_URL}/businessLogic`, {itemId}, {
                 headers: {
                     Authorization: `Bearer ${this.token}`,
+                    'bypass-tunnel-reminder': 'true',
                 }
             });
             return response;
@@ -57,7 +60,8 @@ export class ApiService {
         try {
             const response = await axios.delete(`${BASE_URL}/antiques/${id}`, {
                 headers: {
-                    Authorization: `Bearer ${this.token}`
+                    Authorization: `Bearer ${this.token}`,
+                    'bypass-tunnel-reminder': 'true',
                 }
             });
             return response;
@@ -69,7 +73,11 @@ export class ApiService {
 
     async login(username: string, password: string) {
         try {
-            const response = await axios.post(`${BASE_URL}/auth/signin`, { username, password });
+            const response = await axios.post(`${BASE_URL}/auth/signin`, { username, password },{
+                headers: {
+                    'bypass-tunnel-reminder': 'true',
+                }
+            });
             this.token = response.data.token
             return response.data;
         } catch (error) {
@@ -82,7 +90,8 @@ export class ApiService {
         try {
             const response = await axios.post(`${BASE_URL}/auth/register`, { username, password }, {
                 headers: {
-                    Authorization: `Bearer ${this.token}`
+                    Authorization: `Bearer ${this.token}`,
+                    'bypass-tunnel-reminder': 'true',
                 }
             });
             return response;
@@ -97,7 +106,8 @@ export class ApiService {
             console.log(autoBidBalance)
             const response = await axios.put(`${BASE_URL}/auth/`, { autoBidBalance, notificationParcentage }, {
                 headers: {
-                    Authorization: `Bearer ${this.token}`
+                    Authorization: `Bearer ${this.token}`,
+                    'bypass-tunnel-reminder': 'true',
                 }
             });
             return response;
@@ -111,7 +121,8 @@ export class ApiService {
         try {
             const response = await axios.post(`${BASE_URL}/antiques/isTokenValid`, {}, {
                 headers: {
-                    Authorization: `Bearer ${this.token}`
+                    Authorization: `Bearer ${this.token}`,
+                    'bypass-tunnel-reminder': 'true',
                 }
             });
             return response.data;
@@ -125,7 +136,8 @@ export class ApiService {
         try {
             const response = await axios.post(`${BASE_URL}/antiques/paginatedListAndSearch`, { limit, offset, sortOrder: sort, name }, {
                 headers: {
-                    Authorization: `Bearer ${this.token}`
+                    Authorization: `Bearer ${this.token}`,
+                    'bypass-tunnel-reminder': 'true',
                 }
             });
             return response.data;
@@ -139,7 +151,8 @@ export class ApiService {
         try {
             const response = await axios.get(`${BASE_URL}/auth/`, {
                 headers: {
-                    Authorization: `Bearer ${this.token}`
+                    Authorization: `Bearer ${this.token}`,
+                    'bypass-tunnel-reminder': 'true',
                 }
             });
             return response;
@@ -153,7 +166,8 @@ export class ApiService {
         try {
             const response = await axios.post(`${BASE_URL}/autoBids/autoBidOn`, { antiquesId: antiqueId }, {
                 headers: {
-                    Authorization: `Bearer ${this.token}`
+                    Authorization: `Bearer ${this.token}`,
+                    'bypass-tunnel-reminder': 'true',
                 }
             });
             return response;
@@ -167,7 +181,8 @@ export class ApiService {
         try {
             const response = await axios.post(`${BASE_URL}/autoBids/autoBidOff`, { antiquesId: antiqueId }, {
                 headers: {
-                    Authorization: `Bearer ${this.token}`
+                    Authorization: `Bearer ${this.token}`,
+                    'bypass-tunnel-reminder': 'true',
                 }
             });
             return response;
@@ -181,7 +196,8 @@ export class ApiService {
         try {
             const response = await axios.post(`${BASE_URL}/bids/getLastBidsByUserId`, {}, {
                 headers: {
-                    Authorization: `Bearer ${this.token}`
+                    Authorization: `Bearer ${this.token}`,
+                    'bypass-tunnel-reminder': 'true',
                 }
             });
             return response;
