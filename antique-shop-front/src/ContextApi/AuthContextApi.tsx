@@ -9,7 +9,8 @@ interface AuthContextType {
     isAdmin: boolean,
     setIsAuthenticated: (t: boolean) => void,
     userId: number,
-    requested: boolean
+    requested: boolean,
+    setRequested: (t: boolean) => void
 }
 
 interface AuthProviderProps {
@@ -19,10 +20,10 @@ interface AuthProviderProps {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-    const { isAuthenticated, isAdmin, setToken, setIsAuthenticated, userId, apiService, requested } = useUserInfo();
+    const { isAuthenticated, isAdmin, setToken, setIsAuthenticated, userId, apiService, requested ,setRequested} = useUserInfo();
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, setToken, apiService, isAdmin, setIsAuthenticated, userId, requested }} >
+        <AuthContext.Provider value={{ isAuthenticated, setToken, apiService, isAdmin, setIsAuthenticated, userId, requested, setRequested }} >
             {children}
         </AuthContext.Provider >
     );

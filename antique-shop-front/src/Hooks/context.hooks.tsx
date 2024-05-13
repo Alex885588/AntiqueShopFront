@@ -41,5 +41,5 @@ export function useUserInfo() {
         const isAdmin = decodedToken.role === userRole.Admin;
         setIsAdmin(isAdmin);
     }
-    return { isAuthenticated, isAdmin, setToken, setIsAuthenticated, userId, apiService, requested };
+    return { isAuthenticated, isAdmin, setToken, setIsAuthenticated, userId, apiService, requested, setRequested };
 }
