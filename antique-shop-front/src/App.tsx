@@ -7,11 +7,15 @@ import { ItemDetailsPage } from './Components/ItemDetailsPage/ItemDetailsPage';
 import { ProfilePage } from './Components/ProfilePage.tsx/ProfilePage';
 import { RegisterPage } from './Components/Register/Register';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Spinner } from './Components/Spinner/Spinner';
 
 const ProtectedRoute = (props: { component: React.ComponentType<any> }) => {
   const context = useAuth();
   const isAuthenticated = context?.isAuthenticated;
-  return isAuthenticated ? <props.component /> : <LoginPage />
+  if (!context?.requested) {
+    return <Spinner></Spinner>
+  }
+  return isAuthenticated || context?.requested ? <props.component /> : <LoginPage />
 };
 
 function App() {

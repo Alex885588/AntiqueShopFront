@@ -9,6 +9,7 @@ export function useUserInfo() {
     const [isAdmin, setIsAdmin] = useState<boolean>(false);
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const [userId, setUserId] = useState(0);
+    const [requested, setRequested] = useState(false);
 
     useEffect(() => {
         const isTokenValid = async () => {
@@ -28,6 +29,7 @@ export function useUserInfo() {
             setUserId(decodedToken.id)
             const isAdmin = decodedToken.role === userRole.Admin;
             setIsAdmin(isAdmin);
+            setRequested(true)
         }
         isTokenValid()
     }, [])
@@ -39,5 +41,5 @@ export function useUserInfo() {
         const isAdmin = decodedToken.role === userRole.Admin;
         setIsAdmin(isAdmin);
     }
-    return { isAuthenticated, isAdmin, setToken, setIsAuthenticated, userId, apiService };
+    return { isAuthenticated, isAdmin, setToken, setIsAuthenticated, userId, apiService, requested };
 }
