@@ -20,7 +20,7 @@ export function useUserInfo() {
             }
             apiService.setToken(token)
             const result = await apiService.isTokenValid()
-            if (!result.data) {
+            if (!result) {
                 setIsAuthenticated(false)
             }
             setIsAuthenticated(true);

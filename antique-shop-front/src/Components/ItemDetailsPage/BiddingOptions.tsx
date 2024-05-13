@@ -35,7 +35,7 @@ export const BiddingOptions: React.FC<BiddingOptionsProps> = ({
                             Enter Bid Amount:
                         </label>
                         <div className="input-group">
-                            <input type="number" className="form-control" id="bidAmount" value={bid} onChange={handleChange} />
+                            <input type="number" className="form-control" id="bidAmount" value={bid} onChange={handleChange} disabled />
                             <button type="button" className="btn btn-primary" onClick={biddingItem}>
                                 Place Bid
                             </button>
