@@ -7,7 +7,7 @@ const apiService = new ApiService();
 
 export function useUserInfo() {
     const [isAdmin, setIsAdmin] = useState<boolean>(false);
-    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(true);
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const [userId, setUserId] = useState(0);
 
     useEffect(() => {
