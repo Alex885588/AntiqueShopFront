@@ -12,13 +12,7 @@ import { Spinner } from './Components/Spinner/Spinner';
 const ProtectedRoute = (props: { component: React.ComponentType<any> }) => {
   const context = useAuth();
   const isAuthenticated = context?.isAuthenticated;
-  if (!isAuthenticated && !context?.requested) {
-    return <LoginPage />
-  }
-  if (!context?.requested) {
-    return <Spinner></Spinner>
-  }
-  return < props.component />
+  return isAuthenticated ? <props.component /> : <LoginPage />
 };
 
 function App() {
